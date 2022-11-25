@@ -15,6 +15,12 @@ const CountryDetails = ({ countriesArray }) => {
 
   return (
     <div className="col-7">
+      <picture>
+        <img
+          src={`https://flagpedia.net/data/flags/icon/72x54/${showDetail.alpha2Code.toLowerCase()}.png`}
+          alt={showDetail.name.official}
+        />
+      </picture>
       <h1>{showDetail.name.official}</h1>
       <table class="table">
         <thead></thead>
