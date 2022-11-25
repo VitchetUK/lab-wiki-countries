@@ -38,7 +38,7 @@ const CountryDetails = ({ countriesArray }) => {
                   return (
                     <Link
                       className="list-group-item list-group-item-action"
-                      to={borderCountry}
+                      to={`/${borderCountry}`}
                     >
                       <li>{borderCountry}</li>
                     </Link>

@@ -3,14 +3,25 @@ import './App.css';
 import CountriesList from './components/CountriesList';
 import Navbar from './components/Navbar';
 import CountryDetails from './components/CountryDetails';
-import countries from './countries.json';
-import { useState } from 'react';
-import { Routes, Route, Link, NavLink, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 function App() {
-  const [countriesArray, setCountriesArray] = useState(countries);
+  const [countriesArray, setCountriesArray] = useState([]);
   const params = useParams();
   const id = params.id;
+
+  useEffect(() => {
+    axios
+      .get('https://ih-countries-api.herokuapp.com/countries')
+      .then(({ data }) => {
+        setCountriesArray(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   return (
     <div className="App">
